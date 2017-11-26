@@ -11,5 +11,6 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+	defer dst.Close()
 	io.CopyN(dst, rand.Reader, 1024)
 }
