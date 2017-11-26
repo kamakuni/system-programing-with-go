@@ -12,7 +12,7 @@ func dumpChunks(chunk io.Reader) {
 	binary.Read(chunk, binary.BigEndian, &length)
 	buffer := make([]byte, 4)
 	chunk.Read(buffer)
-	fmt.Printf("chunk '%v' (%d bytes)", string(buffer), length)
+	fmt.Printf("chunk '%v' (%d bytes)\n", string(buffer), length)
 }
 
 func readChunks(file *os.File) []io.Reader {
@@ -34,7 +34,7 @@ func readChunks(file *os.File) []io.Reader {
 
 func main() {
 	file, err := os.Open("Lenna.png")
-	if file != nil {
+	if err != nil {
 		panic(err)
 	}
 	chunks := readChunks(file)
