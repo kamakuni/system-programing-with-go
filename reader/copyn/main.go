@@ -7,7 +7,7 @@ import (
 )
 
 func copyN(dest io.Writer, src io.Reader, length int) (n int64, err error) {
-	written, err := io.Copy(dest, &io.LimitedReader{src, n})
+	written, err := io.Copy(dest, io.LimitReader(src, n))
 	if err != nil {
 		return 0, err
 	}
