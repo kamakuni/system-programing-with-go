@@ -22,7 +22,7 @@ func main() {
 		if err != nil {
 			panic(err)
 		}
-		fmt.Printf("Received from %v:%v\n", remoteAddress, string(buffer[:length]))
+		fmt.Printf("Received from %v: %v\n", remoteAddress, string(buffer[:length]))
 		_, err = conn.WriteTo([]byte("Hello from Server"), remoteAddress)
 		if err != nil {
 			panic(err)
